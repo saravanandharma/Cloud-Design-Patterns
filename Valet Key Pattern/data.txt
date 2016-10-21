@@ -1,0 +1,4 @@
+This is an example of how Valet Key Pattern works.
+If you have an access token then you would be able to read/write to this file.
+If you don't have an access token, you won't be able to read/write to this file.
+The access token will expire after 1 minute.

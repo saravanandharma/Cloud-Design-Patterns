@@ -10,5 +10,5 @@ Whenever a request fails, the application waits for a certain interval of time a
 - Valet Key Pattern:
 In order to access resources directly, the application is provided with a key or token which is referred to as a valet key. Using this key the application can directly access resources for a certain period of time.
 
-- External Configuration Store Pattern:
+- External Configuration Store Pattern (To be added):
 The configuration files related to an application are stored in an external storage and an interface is provided to read and update the configuration settings.

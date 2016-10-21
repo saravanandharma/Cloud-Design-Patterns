@@ -1,0 +1,3 @@
+# Priority Queue Pattern
+The Priority Queue pattern allows an application to process its messages/tasks based on the priority assigned to them. An application creates the tasks and assigns a priority to them. These tasks are placed into a queue based on their priority and they are consumed based on their priority.
+The application can be run by executing the PriorityQueueTest.java file. The application contains a Task List which contains tasks arranged by their priorities and an execution list which contains records of each task executed.

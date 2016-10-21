@@ -1,0 +1,3 @@
+# Valet Key Pattern
+The Valet Key pattern allows an application to directly access resources. This is done by providing the application with a token or a key which is called the Valet Key. This key allows the application direct access to the resources. The Valet Key does expire after sometime and needs to be refreshed to keep access to the resources.
+The application can be run by executing the ValetKeyTest.java file. The application prompts the username and password and returns a token to the user. When the token is retrieved, the data can be accessed. You can enter any username or password for this application.

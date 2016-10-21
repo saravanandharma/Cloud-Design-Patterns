@@ -1,0 +1,3 @@
+# Retry Pattern
+The Retry Pattern allows an application to handle its failures and exception by retrying/resending its requests after a certain interval of time. If a request fails, the application waits for a certain interval and retries. Subsequent failures result in the application waiting for increased periods of time until either the request succeeds or the timeout reaches a certain interval.
+The application can be run by executing the RetryPatternTest.java file. User can create any number of tasks which are added to the queue. The tasks can be executed and the application takes 10 seconds to execute a task. When a task is executed while another task is executing, it causes the application to wait until the consumer gets free and retry.

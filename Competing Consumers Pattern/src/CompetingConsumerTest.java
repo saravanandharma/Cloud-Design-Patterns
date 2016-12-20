@@ -1,7 +1,6 @@
 /**
- * Created by Bilal on 12/21/2016.
+ * Created by Confiz-234 on 12/21/2016.
  */
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -11,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -84,9 +84,32 @@ public class CompetingConsumerTest extends Application {
         queue.setPrefWidth(200);
         queue.setPrefRowCount(20);
 
+        VBox consumers = new VBox();
+        consumers.setSpacing(10);
+
+        consumer1 = new TextArea();
+        consumer1.setEditable(false);
+        consumer1.setPrefWidth(200);
+        consumer1.setPrefRowCount(7);
+
+        consumer2 = new TextArea();
+        consumer2.setEditable(false);
+        consumer2.setPrefWidth(200);
+        consumer2.setPrefRowCount(7);
+
+        consumer3 = new TextArea();
+        consumer3.setEditable(false);
+        consumer3.setPrefWidth(200);
+        consumer3.setPrefRowCount(7);
+
+        consumers.getChildren().add(consumer1);
+        consumers.getChildren().add(consumer2);
+        consumers.getChildren().add(consumer3);
+
         gridPane.add(executeTask, 2, 0);
         gridPane.add(hBox, 0, 0, 2, 1);
         gridPane.add(queue, 0, 1);
+        gridPane.add(consumers, 2, 1);
 
         Scene scene = new Scene(gridPane, 500, 300);
         primaryStage.setScene(scene);
@@ -98,21 +121,63 @@ public class CompetingConsumerTest extends Application {
             while(!taskList.isEmpty()) {
                 if(!consumer1Busy) {
                     Task task = taskList.get(0);
-                    consumer1.setText(task.message + "\n");
-                    //Start wait thread for consumer 1
-                    taskList.remove(task);
+                    consumer1.setText(consumer1.getText() + "Executing Task: " + task.message + "\n");
+                    consumer1Busy = true;
+                    Thread waitThread = new Thread(() -> {
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        consumer1.setText(consumer1.getText() + "Execution Done\n");
+                        consumer1Busy = false;
+                    });
+                    waitThread.start();
+                    taskList.remove(0);
+                    setQueueText();
                 } else if(!consumer2Busy) {
                     Task task = taskList.get(0);
-                    consumer2.setText(task.message + "\n");
-                    //Start wait thread for consumer 2
-                    taskList.remove(task);
+                    consumer2.setText(consumer2.getText() + "Executing Task: " + task.message + "\n");
+                    Thread waitThread = new Thread(() -> {
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        consumer2.setText(consumer1.getText() + "Execution Done\n");
+                        consumer2Busy = false;
+                    });
+                    waitThread.start();
+                    consumer2Busy = true;
+                    taskList.remove(0);
+                    setQueueText();
                 } else if(!consumer3Busy) {
                     Task task = taskList.get(0);
-                    consumer3.setText(task.message + "\n");
-                    //Start wait thread for consumer 3
-                    taskList.remove(task);
+                    consumer3.setText(consumer3.getText() + "Executing Task: " + task.message + "\n");
+                    Thread waitThread = new Thread(() -> {
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        consumer3.setText(consumer3.getText() + "Execution Done\n");
+                        consumer3Busy = false;
+                    });
+                    waitThread.start();
+                    consumer3Busy = true;
+                    taskList.remove(0);
+                    setQueueText();
                 }
+
+                System.out.println();
             }
         });
+    }
+
+    private void setQueueText() {
+        queue.setText("");
+        for(Task task : taskList) {
+            queue.setText(queue.getText() + task.message + "\n");
+        }
     }
 }

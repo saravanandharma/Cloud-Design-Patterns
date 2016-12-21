@@ -1,3 +1,2 @@
 # Gatekeeper Pattern
-The Gatekeeper Pattern acts as a middle man between an application and the resources that it wants to access. When an application wants to access resources, it passes its credentials to the gatekeeper which verifies the credentials, calls the necessary requests and returns data to the application. It adds an extra layer of security in an application.
-The application can be run by executing GatekeeperTest.java
+The Gatekeeper Pattern acts as a middle man between an application and the resources that it wants to access. When an application wants to access resources, it passes its credentials to the gatekeeper which verifies the credentials, calls the necessary requests and returns data to the application. It adds an extra layer of security in an application. The application can be run by executing GatekeeperTest.java

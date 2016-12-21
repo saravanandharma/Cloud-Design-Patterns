@@ -1,0 +1,2 @@
+This is an example file for Gatekeeper Pattern.
+Gatekeeper Pattern is a middle-man between resource and application.

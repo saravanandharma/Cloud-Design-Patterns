@@ -1,0 +1,3 @@
+# Health Endpoint Monitoring Pattern
+The Health Endpoint Monitoring Pattern keeps track of the various services and parts of an application to see if it is still working or has some fault occurred in that service. This pattern helps in identifying an error that might cause an application to crash by point out the endpoint which is at fault.
+The application can be run by executing HealthEndpointMonitoringTest.java

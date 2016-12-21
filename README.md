@@ -10,5 +10,17 @@ Whenever a request fails, the application waits for a certain interval of time a
 - Valet Key Pattern:
 In order to access resources directly, the application is provided with a key or token which is referred to as a valet key. Using this key the application can directly access resources for a certain period of time.
 
-- External Configuration Store Pattern (To be added):
+- External Configuration Store Pattern:
 The configuration files related to an application are stored in an external storage and an interface is provided to read and update the configuration settings.
+
+- Competing Consumers Pattern:
+Incoming tasks are placed in a queue and are assigned to the available consumers in the application.
+
+- Gatekeeper Pattern:
+A Gatekeeper entity is used as a middle-man to handle all requests between clients and the resources.
+
+- Health Endpoint Monitoring Pattern:
+A service keeps track of all other services/endpoints and monitors their state to see if they are working or have some fault.
+
+- Queue-Based Load Levelling Pattern:
+A queue buffers messages which are coming at an irregular rate and transfers them to a consumer which processes them at a much more stable rate.
